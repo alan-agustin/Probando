@@ -5,19 +5,23 @@ using UnityEngine;
 public class NauJugador : MonoBehaviour
 {
     private float _vel;
-
-    // Start is called before the first frame update
-
     Vector2 minPantalla, maxPantalla;
+    
+    [SerializeField]
+    private GameObject prefabProjectil;
+
+
+
+
     void Start()
     {
         _vel = 20;
         minPantalla = Camera.main.ViewportToWorldPoint(new Vector2(0, 0)); //limite inferior
         maxPantalla = Camera.main.ViewportToWorldPoint(new Vector2(1, 1)); //limite superior
 
-        float midaMeitatImatgeX = GetComponent<SpriteRenderer>().sprite.bounds.size.x * transform.localScale.x/ 2;
+        float midaMeitatImatgeX = GetComponent<SpriteRenderer>().sprite.bounds.size.x * transform.localScale.x / 2;
         float midaMeitatImatgeY = GetComponent<SpriteRenderer>().bounds.size.y / 2;
-       
+
         //minPantalla.x = minPantalla.x + 1.3f;
         //minPantalla.x += 1.3f; hace lo mismo que la de arriba
         //minPantalla.x +=
@@ -34,18 +38,34 @@ public class NauJugador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float direccioIndicadaX = Input.GetAxisRaw("Horizontal");
-        float direccioIndicadaY = Input.GetAxisRaw("Vertical");
-        //Debug.Log("X: " + direccioIndicadaX + " - Y: " + direccioIndicadaY);
+        MovimentNau();
+        DisparaProjectil();
 
-        Vector2 direccioIndicada = new Vector2(direccioIndicadaX, direccioIndicadaY).normalized;
+    }
+    private void MovimentNau()
+    {
+     float direccioIndicadaX = Input.GetAxisRaw("Horizontal");
+    float direccioIndicadaY = Input.GetAxisRaw("Vertical");
+    //Debug.Log("X: " + direccioIndicadaX + " - Y: " + direccioIndicadaY);
 
-        Vector2 novaPos = transform.position;
-        novaPos = novaPos + direccioIndicada * _vel * Time.deltaTime;
+    Vector2 direccioIndicada = new Vector2(direccioIndicadaX, direccioIndicadaY).normalized;
 
-        novaPos.x = Mathf.Clamp(novaPos.x, minPantalla.x,maxPantalla.x);
-        novaPos.y = Mathf.Clamp(novaPos.y, minPantalla.y,maxPantalla.y);
+    Vector2 novaPos = transform.position;
+    novaPos = novaPos + direccioIndicada* _vel * Time.deltaTime;
+
+        novaPos.x = Mathf.Clamp(novaPos.x, minPantalla.x, maxPantalla.x);
+        novaPos.y = Mathf.Clamp(novaPos.y, minPantalla.y, maxPantalla.y);
        
         transform.position = novaPos; //tres lineas que hacen que la variable posicion la guardamos en nova, y luego al igualar hacemos que la posicion cambie.
+        }
+
+
+    private void DisparaProjectil() 
+    {
+        if (Input.GetKeyDown("space"))
+        {
+            GameObject projectil = Instantiate(prefabProjectil);
+            projectil.transform.position = transform.position;
+        }
     }
 }
