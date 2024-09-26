@@ -11,14 +11,24 @@ public class NauJugador : MonoBehaviour
     Vector2 minPantalla, maxPantalla;
     void Start()
     {
-        _vel = 8;
+        _vel = 20;
         minPantalla = Camera.main.ViewportToWorldPoint(new Vector2(0, 0)); //limite inferior
         maxPantalla = Camera.main.ViewportToWorldPoint(new Vector2(1, 1)); //limite superior
 
-        minPantalla.x = minPantalla.x + 1.3f;
-        maxPantalla.x = maxPantalla.x - 1.3f;
-        minPantalla.y = minPantalla.y + 1.3f;
-        maxPantalla.y = maxPantalla.y - 1.3f;
+        float midaMeitatImatgeX = GetComponent<SpriteRenderer>().sprite.bounds.size.x * transform.localScale.x/ 2;
+        float midaMeitatImatgeY = GetComponent<SpriteRenderer>().bounds.size.y / 2;
+       
+        //minPantalla.x = minPantalla.x + 1.3f;
+        //minPantalla.x += 1.3f; hace lo mismo que la de arriba
+        //minPantalla.x +=
+        //maxPantalla.x -= GetComponent<SpriteRenderer>().bounds.size.x / 2;
+        //minPantalla.y += GetComponent<SpriteRenderer>().bounds.size.y / 2;
+        //maxPantalla.y -= GetComponent<SpriteRenderer>().bounds.size.y / 2; 
+
+        minPantalla.x += midaMeitatImatgeX;
+        maxPantalla.x -= midaMeitatImatgeX;
+        minPantalla.y += midaMeitatImatgeY;
+        maxPantalla.y -= midaMeitatImatgeY;
     }
 
     // Update is called once per frame
