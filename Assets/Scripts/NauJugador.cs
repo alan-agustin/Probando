@@ -58,6 +58,13 @@ public class NauJugador : MonoBehaviour
        
         transform.position = novaPos; //tres lineas que hacen que la variable posicion la guardamos en nova, y luego al igualar hacemos que la posicion cambie.
         }
+    private void OnTriggerEnter2D(Collider2D objecteTocat)
+    {
+        if (objecteTocat.tag == "Numero")
+        {
+            Destroy(gameObject);
+        }
+    }
 
 
     private void DisparaProjectil() 
@@ -67,5 +74,6 @@ public class NauJugador : MonoBehaviour
             GameObject projectil = Instantiate(prefabProjectil);
             projectil.transform.position = transform.position;
         }
+
     }
 }
