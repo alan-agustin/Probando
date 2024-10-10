@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NauJugador : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class NauJugador : MonoBehaviour
     [SerializeField]
     private GameObject prefabExplosio;
 
+    private int videsJugador;
+
+    [SerializeField]
+    private TMPro.TextMeshProUGUI uiVidesJugador;
 
 
 
@@ -36,6 +41,8 @@ public class NauJugador : MonoBehaviour
         maxPantalla.x -= midaMeitatImatgeX;
         minPantalla.y += midaMeitatImatgeY;
         maxPantalla.y -= midaMeitatImatgeY;
+
+        videsJugador = 3;
     }
 
     // Update is called once per frame
@@ -66,10 +73,15 @@ public class NauJugador : MonoBehaviour
     {
         if (objecteTocat.tag == "Numero")
         {
-            GameObject explosio = Instantiate(prefabExplosio);
-            explosio.transform.position = transform.position;
-            Destroy(gameObject);
-
+            videsJugador--;
+            uiVidesJugador.text = "vides: " + videsJugador.ToString();
+            if (videsJugador <= 0)
+            {
+                GameObject explosio = Instantiate(prefabExplosio);
+                explosio.transform.position = transform.position;
+                SceneManager.LoadScene("pantallaResultats");
+                Destroy(gameObject);
+            }
         }
     }
 
