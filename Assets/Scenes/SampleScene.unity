@@ -341,7 +341,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -359,6 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabProjectil: {fileID: 985199791888116509, guid: bca9c799d1b395149b8722f3ca7997d6, type: 3}
+  prefabExplosio: {fileID: 6259447305407476938, guid: 240b51087c79e2f48949cb1ba068d03f, type: 3}
 --- !u!50 &2104817376
 Rigidbody2D:
   serializedVersion: 4
@@ -385,7 +386,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &2104817377
 BoxCollider2D:
   m_ObjectHideFlags: 0

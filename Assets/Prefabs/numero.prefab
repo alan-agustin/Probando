@@ -110,6 +110,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 183ef5476ceffd24dac053da8c7ea2ca, type: 3}
   - {fileID: 21300000, guid: 1eb9dfb6a0506c746b1d4b3aff4bed66, type: 3}
   - {fileID: 21300000, guid: 5270a45b9cd14d24b8cf5892a56bfb64, type: 3}
+  prefabExplosio: {fileID: 6259447305407476938, guid: 240b51087c79e2f48949cb1ba068d03f, type: 3}
 --- !u!50 &7584860087348364927
 Rigidbody2D:
   serializedVersion: 4

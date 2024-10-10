@@ -10,6 +10,9 @@ public class NauJugador : MonoBehaviour
     [SerializeField]
     private GameObject prefabProjectil;
 
+    [SerializeField]
+    private GameObject prefabExplosio;
+
 
 
 
@@ -58,11 +61,15 @@ public class NauJugador : MonoBehaviour
        
         transform.position = novaPos; //tres lineas que hacen que la variable posicion la guardamos en nova, y luego al igualar hacemos que la posicion cambie.
         }
+   
     private void OnTriggerEnter2D(Collider2D objecteTocat)
     {
         if (objecteTocat.tag == "Numero")
         {
+            GameObject explosio = Instantiate(prefabExplosio);
+            explosio.transform.position = transform.position;
             Destroy(gameObject);
+
         }
     }
 
