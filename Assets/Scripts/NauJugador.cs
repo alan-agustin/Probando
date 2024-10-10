@@ -23,6 +23,7 @@ public class NauJugador : MonoBehaviour
 
     void Start()
     {
+        DadesGlobals.reiniciarPunts();
         _vel = 20;
         minPantalla = Camera.main.ViewportToWorldPoint(new Vector2(0, 0)); //limite inferior
         maxPantalla = Camera.main.ViewportToWorldPoint(new Vector2(1, 1)); //limite superior

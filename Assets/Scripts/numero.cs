@@ -37,6 +37,7 @@ public class numero : MonoBehaviour
 
         if(transform.position.y < minPantalla.y)
         {
+            DadesGlobals.punts += -valorNumero;
             Destroy(gameObject);
         }
     }
@@ -47,6 +48,7 @@ public class numero : MonoBehaviour
         {
             GameObject explosio = Instantiate(prefabExplosio);
             explosio.transform.position = transform.position;
+            DadesGlobals.punts += +valorNumero;
             Destroy(gameObject);
         }
     }
